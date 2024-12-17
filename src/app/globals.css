@@ -2,9 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
+/* nprogress-custom.css */
+
+/* Change the color and size of the progress bar */
+#nprogress .bar {
+  box-shadow:none;
+}
+
+.readMoreEffect:hover .readMore{
+  opacity: 1;
+}
+
+.readMore{
+  transition:200ms cubic-bezier(0, 0, 0.16, 1.31);
+  opacity: 0;
+}
 :root {
   --background: #ffffff;
   --foreground: #171717;
+}
+
+/* Webkit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 14px;
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin; /* "auto" or "thin" */
+  scrollbar-color: #204560 #00466e00; /* thumb color and track color */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -13,7 +39,26 @@
     --foreground: #ededed;
   }
 }
+.loader {
+  width: 48px;
+  height: 48px;
+  background: #FFF;
+  display: inline-block;
+  border-radius: 50%;
+  box-sizing: border-box;
+  animation: animloader 1s ease-in infinite;
+}
 
+@keyframes animloader {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+} 
 body {
   color: var(--foreground);
   background: var(--background);
