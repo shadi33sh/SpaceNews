@@ -9,6 +9,7 @@ import Search from './Search';
 import { FaChevronCircleDown } from "react-icons/fa";
 
 // Customize NProgress behavior
+
 NProgress.configure({
   showSpinner: false,
   minimum: 0.1,
@@ -45,7 +46,7 @@ export default function NewsPage() {
   const getNews = () => {
     NProgress.start();
     setIsLoading(true);
-    setError(null); // Clear any previous error
+    setError(null); 
 
     axios
       .get(`https://api.spaceflightnewsapi.net/v4/${SearchType}/`, {

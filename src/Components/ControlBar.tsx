@@ -15,6 +15,7 @@ const ControlBar: React.FC<ControlBarProps> = ({ func, changeFunc }) => {
   const [isHidden, setIsHidden] = useState(false);
   const [showTopButton, setShowTopButton] = useState(false);
   const [SearchType, setType] = useState('articles');
+  const [position , setPosition ] = useState('start');
 
   const controls = useAnimation();
 
@@ -78,11 +79,11 @@ const ControlBar: React.FC<ControlBarProps> = ({ func, changeFunc }) => {
 
           <div className='flex flex-col relative max-md:hidden'>
             <div className={`transition-all duration-100 max-md:hidden flex gap-20 font-semibold justify-evenly`}>
-              <button onClick={() => { setType("articles"), changeFunc("articles") }}>Articles</button>
-              <button onClick={() => { setType("blogs"), changeFunc("blogs") }}>{'Blogs'}</button>
-              <button onClick={() => { setType("reports"), changeFunc("reports") }}>Reports</button>
+              <button onClick={() => { setType("articles") , setPosition('start'), changeFunc("articles") }}>Articles</button>
+              <button onClick={() => { setType("blogs"),   setPosition('center') , changeFunc("blogs") }}>{'Blogs'}</button>
+              <button onClick={() => { setType("reports") , setPosition('end') , changeFunc("reports") }}>Reports</button>
             </div>
-            <div className={`h-1 w-full pl-[5px] pr-1 absolute top-7 flex justify-${SearchType === "blogs" ? 'center' : SearchType === "articles" ? 'start' : 'end'}`}>
+            <div className={`h-1 w-full pl-[5px] pr-1 absolute top-7 flex justify-${position}`}>
               <div className='h-1 w-12 bg-blue-400 rounded-full'></div>
             </div>
           </div>
@@ -102,8 +103,8 @@ const ControlBar: React.FC<ControlBarProps> = ({ func, changeFunc }) => {
               }}
               className='font-bold flex items-center gap-5 bg-gradient-to-b p-2 bg-gray-700 rounded-full w-full self-center'
             >
-              <div className='flex justify-center items-center gap-1 bg-gradient-to-b from-blue-500 to-blue-400 rounded-full p-1'>Search <FaSearch /></div>
-              <p className='text-gray-500'>type what you wanna search for</p>
+              <div className='flex justify-center items-center gap-1 bg-gradient-to-b from-blue-500 to-blue-400 font-semibold text-xs rounded-full p-2'>Search <FaSearch /></div>
+              <p className='text-gray-500 text-xs'>type what you wanna search for</p>
             </button>
 
             <button
